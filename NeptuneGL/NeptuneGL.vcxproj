@@ -19,11 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\NeptuneGL\ContextSettings.h" />
     <ClInclude Include="include\NeptuneGL\Core.h" />
-    <ClInclude Include="include\NeptuneGL\Export.h" />
+    <ClInclude Include="include\NeptuneGL\VideoMode.h" />
+    <ClInclude Include="include\NeptuneGL\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\ContextSettings.cpp" />
     <ClCompile Include="src\Core.cpp" />
+    <ClCompile Include="src\VideoMode.cpp" />
+    <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FFAEBD7B-93B6-4338-A4B0-7AB198524D61}</ProjectGuid>
@@ -33,13 +38,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -82,19 +87,21 @@
     <OutDir>$(SolutionDir)\$(ProjectName)\lib\</OutDir>
     <TargetName>$(ProjectName)-d</TargetName>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\$(ProjectName)\lib\</OutDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;GLEW_STATIC;_DEBUG;_LIB;NEPTUNE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;NEPTUNE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
@@ -106,13 +113,16 @@
     </Link>
     <Lib>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;SOIL.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>lib</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)$(Configuration)\$(TargetName).dll"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <ProjectReference>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+      <LinkLibraryDependencies>
+      </LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -135,7 +145,7 @@
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;GLEW_STATIC;NDEBUG;_LIB;NEPTUNE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NEPTUNE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -152,12 +162,15 @@
     </Link>
     <Lib>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;SOIL.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>lib</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)$(Configuration)\$(TargetName).dll"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+      <LinkLibraryDependencies>
+      </LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

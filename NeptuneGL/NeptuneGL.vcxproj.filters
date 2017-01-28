@@ -15,14 +15,29 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\NeptuneGL\Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="include\NeptuneGL\Core.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\NeptuneGL\Export.h">
+    <ClInclude Include="include\NeptuneGL\ContextSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NeptuneGL\VideoMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ContextSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VideoMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\Core.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

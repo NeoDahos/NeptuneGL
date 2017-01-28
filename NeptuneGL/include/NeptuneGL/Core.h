@@ -1,15 +1,19 @@
 #ifndef CORE_H
 #define CORE_H
-#include <NeptuneGL\Export.h>
 
 namespace nep
 {
-	class NEPTUNE_API Core
+	class Core abstract
 	{
 	public:
-		Core();
+		static void EnsureGLInit();
 
 	private:
+		static void ErrorCallback(int _code, const char* _message);
+		static void InitGLFW();
+		static bool InitGLEW();
+
+		static bool s_isGLInit;
 	};
 }
 
